@@ -85,6 +85,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="distanceLabel" destination="nKu-od-jzY" id="zOF-Oj-6Un"/>
                                             <outlet property="nameLabel" destination="OYf-H0-2qa" id="JhV-Ii-AYG"/>
                                             <outlet property="thumbImageView" destination="X7w-cA-kvv" id="lal-W3-NXx"/>
                                         </connections>

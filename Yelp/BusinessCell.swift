@@ -11,6 +11,7 @@ import UIKit
 class BusinessCell: UITableViewCell {
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
