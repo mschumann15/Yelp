@@ -8,22 +8,33 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
     var businesses: [Business]!
     @IBOutlet weak var tableView: UITableView!
     
-
+    var searchController : UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         tableView.delegate = self
         tableView.dataSource = self
         //tableView.rowHeight = 110
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 120
         
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.sizeToFit()
+        searchController.delegate = self
+        
+        navigationItem.titleView = searchController.searchBar
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+
+        
+        Business.searchWithTerm(term: "German", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
                 self.businesses = businesses
                 self.tableView.reloadData()
@@ -64,13 +75,29 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    func tableView(_ tableView: UITableView!, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
         
         cell.business = businesses?[indexPath.row]
         
         return cell
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Hello")
+        print(searchText)
+        
+        self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Hello")
+    }
+    
     
     
     /*
