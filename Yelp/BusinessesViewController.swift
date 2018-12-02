@@ -34,7 +34,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         searchController.hidesNavigationBarDuringPresentation = false
 
         
-        Business.searchWithTerm(term: "German", completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Japanese", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
                 self.businesses = businesses
                 self.tableView.reloadData()
@@ -45,7 +45,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
                         print(business.address!)
                     }
                 }
-            
             }
         )
         
